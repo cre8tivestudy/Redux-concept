@@ -11,20 +11,20 @@
  * 2. ACTION (TYPE OF ACTION):-  State can be mobified using action - SIMPLE OBJECTS
  *      -Dispatcher:-    Action needs to be sent by someone - known as dispatching an action
  *
- * 3. REDUCER:-      receives the ACTION and modifies the STATE to gice us a new state
+ * 3. REDUCER:-      receives the ACTION and modifies the STATE to give us a new state
  *                  - only mandatory argument is the action type
  *      -Subscriber:- listens for state change to update the ui (using CONNECT)
  */
 
 // STEPS::
 // Step 1. Create STORE: first import then -
-const store = createStore(reduser);
-//Step 2. Create REDUSER and Pass into the STORE, here -> store = createStore(reduser)
-const reduser = (state = initialState /* second argument will be action */) => {
+const store = createStore(reducer);
+//Step 2. Create REDUCER and Pass into the STORE, here -> store = createStore(reducer)
+const reducer = (state = initialState /* second argument will be action */) => {
   return state;
 };
-//Now reduser needs "initialState" to modify with the help of "action"
-//So Step3. is to create initialState and pass it to the reduser, here ->  reduser = (state=initialState)
+//Now reducer needs "initialState" to modify with the help of "action"
+//So Step3. is to create initialState and pass it to the reducer, here ->  reducer = (state=initialState)
 const initialState = {
   //example:
   counter: 0,
@@ -54,10 +54,10 @@ function mapDispatchToProps(dispatch) {
   };
 }
 
-//Now our actions are created and need to be pass as the second argument of reduser into the step-2
-// Step 7. finaly pass the action argument into the reduser with the help of "swith and case" statement
+//Now our actions are created and need to be pass as the second argument of reducer into the step-2
+// Step 7. finaly pass the action argument into the reducer with the help of "swith and case" statement
 //like this-
-const reduser = (state = initialState, action) => {
+const reducer = (state = initialState, action) => {
   switch (action.type) {
     case "INCREASE_COUNTER":
       return { counter: state.counter + 1 };
